@@ -7,6 +7,10 @@ Commenters can reply both to the original item, and reply to other comments as w
 The application is (as of 0.9) built on top of django.contrib.comments,
 which allows it to be easily extended by other modules.
 
+This fork supports MySql by changing tree_path field from TextField to CharField(max_length=500). This required
+replacing the south migrations (0001 and 0002) and starting again at 0001_initial, because you could not
+run the old 0001_initial on MySql:
+DatabaseError: (1170, "BLOB/TEXT column 'tree_path' used in key specification without a key length")
 
 Installation
 ============
